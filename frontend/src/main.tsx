@@ -1,10 +1,26 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import App from "./App";
+import "./index.css";
+
+import { AuthProvider } from "./context/AuthContext";
+import { InterviewProvider } from "./context/InterviewContext";
+
+ReactDOM.createRoot(
+  document.getElementById("root")!
+).render(
+  <React.StrictMode>
+
+    <AuthProvider>
+
+      <InterviewProvider>
+
+        <App />
+
+      </InterviewProvider>
+
+    </AuthProvider>
+
+  </React.StrictMode>
+);
