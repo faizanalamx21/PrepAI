@@ -1,0 +1,1208 @@
+{
+  "AI Engineer": {
+
+    "Easy": [
+      {
+        "id": 1,
+        "question": "What is Artificial Intelligence?"
+      },
+      {
+        "id": 2,
+        "question": "What is Machine Learning?"
+      },
+      {
+        "id": 3,
+        "question": "Explain supervised learning."
+      },
+      {
+        "id": 4,
+        "question": "Explain unsupervised learning."
+      },
+      {
+        "id": 5,
+        "question": "What are features in machine learning?"
+      },
+      {
+        "id": 6,
+        "question": "What is a dataset?"
+      },
+      {
+        "id": 7,
+        "question": "What is training data?"
+      },
+      {
+        "id": 8,
+        "question": "What is a machine learning model?"
+      },
+      {
+        "id": 9,
+        "question": "What is accuracy in machine learning?"
+      },
+      {
+        "id": 10,
+        "question": "What is overfitting?"
+      }
+    ],
+
+
+    "Medium": [
+      {
+        "id": 11,
+        "question": "Explain bias variance tradeoff."
+      },
+      {
+        "id": 12,
+        "question": "How does gradient descent work?"
+      },
+      {
+        "id": 13,
+        "question": "Explain classification and regression."
+      },
+      {
+        "id": 14,
+        "question": "What is feature engineering?"
+      },
+      {
+        "id": 15,
+        "question": "Explain cross validation."
+      },
+      {
+        "id": 16,
+        "question": "What are ensemble learning methods?"
+      },
+      {
+        "id": 17,
+        "question": "Explain regularization techniques."
+      },
+      {
+        "id": 18,
+        "question": "What is hyperparameter tuning?"
+      },
+      {
+        "id": 19,
+        "question": "Explain precision, recall, and F1 score."
+      },
+      {
+        "id": 20,
+        "question": "What is data preprocessing?"
+      }
+    ],
+
+
+    "Hard": [
+      {
+        "id": 21,
+        "question": "Explain backpropagation in neural networks."
+      },
+      {
+        "id": 22,
+        "question": "Explain transformer architecture."
+      },
+      {
+        "id": 23,
+        "question": "How does self attention work?"
+      },
+      {
+        "id": 24,
+        "question": "Explain CNN architecture."
+      },
+      {
+        "id": 25,
+        "question": "Explain RNN limitations."
+      },
+      {
+        "id": 26,
+        "question": "How do you optimize deep learning models?"
+      },
+      {
+        "id": 27,
+        "question": "Explain batch normalization."
+      },
+      {
+        "id": 28,
+        "question": "How does dropout prevent overfitting?"
+      },
+      {
+        "id": 29,
+        "question": "Explain attention mechanism mathematically."
+      },
+      {
+        "id": 30,
+        "question": "Design an AI system for a real-world problem."
+      }
+    ]
+
+  },
+  "ML Engineer": {
+
+  "Easy": [
+    {
+      "id": 101,
+      "question": "What is the difference between AI, Machine Learning, and Deep Learning?"
+    },
+    {
+      "id": 102,
+      "question": "What are the different types of machine learning?"
+    },
+    {
+      "id": 103,
+      "question": "What is supervised learning?"
+    },
+    {
+      "id": 104,
+      "question": "What is unsupervised learning?"
+    },
+    {
+      "id": 105,
+      "question": "What is reinforcement learning?"
+    },
+    {
+      "id": 106,
+      "question": "What is the purpose of training data?"
+    },
+    {
+      "id": 107,
+      "question": "What is the difference between training and testing data?"
+    },
+    {
+      "id": 108,
+      "question": "What is overfitting?"
+    },
+    {
+      "id": 109,
+      "question": "What is underfitting?"
+    },
+    {
+      "id": 110,
+      "question": "What are features and labels?"
+    }
+  ],
+
+
+  "Medium": [
+    {
+      "id": 111,
+      "question": "Explain bias variance tradeoff."
+    },
+    {
+      "id": 112,
+      "question": "How does gradient descent work?"
+    },
+    {
+      "id": 113,
+      "question": "Explain feature engineering."
+    },
+    {
+      "id": 114,
+      "question": "What is cross validation?"
+    },
+    {
+      "id": 115,
+      "question": "Explain L1 and L2 regularization."
+    },
+    {
+      "id": 116,
+      "question": "Explain ensemble learning techniques."
+    },
+    {
+      "id": 117,
+      "question": "How do you handle missing data?"
+    },
+    {
+      "id": 118,
+      "question": "Explain precision, recall, and F1 score."
+    },
+    {
+      "id": 119,
+      "question": "What is hyperparameter tuning?"
+    },
+    {
+      "id": 120,
+      "question": "How do you select the best machine learning model?"
+    }
+  ],
+
+
+  "Hard": [
+    {
+      "id": 121,
+      "question": "Explain the mathematics behind gradient descent."
+    },
+    {
+      "id": 122,
+      "question": "Explain backpropagation algorithm."
+    },
+    {
+      "id": 123,
+      "question": "How do you optimize a machine learning pipeline?"
+    },
+    {
+      "id": 124,
+      "question": "Explain model deployment strategies."
+    },
+    {
+      "id": 125,
+      "question": "How do you handle model drift?"
+    },
+    {
+      "id": 126,
+      "question": "Explain distributed machine learning."
+    },
+    {
+      "id": 127,
+      "question": "How do you improve a low-performing ML model?"
+    },
+    {
+      "id": 128,
+      "question": "Explain feature selection techniques."
+    },
+    {
+      "id": 129,
+      "question": "How would you design an ML system at scale?"
+    },
+    {
+      "id": 130,
+      "question": "Explain the complete machine learning lifecycle."
+    }
+  ]
+
+},
+"Data Scientist": {
+
+  "Easy": [
+    {
+      "id": 201,
+      "question": "What does a data scientist do?"
+    },
+    {
+      "id": 202,
+      "question": "What is exploratory data analysis?"
+    },
+    {
+      "id": 203,
+      "question": "What is data preprocessing?"
+    },
+    {
+      "id": 204,
+      "question": "What is structured and unstructured data?"
+    },
+    {
+      "id": 205,
+      "question": "Explain mean, median, and mode."
+    },
+    {
+      "id": 206,
+      "question": "What is correlation?"
+    },
+    {
+      "id": 207,
+      "question": "What are outliers?"
+    },
+    {
+      "id": 208,
+      "question": "Why is data cleaning important?"
+    },
+    {
+      "id": 209,
+      "question": "What is data visualization?"
+    },
+    {
+      "id": 210,
+      "question": "What is a dataset?"
+    }
+  ],
+
+
+  "Medium": [
+    {
+      "id": 211,
+      "question": "Explain hypothesis testing."
+    },
+    {
+      "id": 212,
+      "question": "What is a confidence interval?"
+    },
+    {
+      "id": 213,
+      "question": "Explain regression analysis."
+    },
+    {
+      "id": 214,
+      "question": "What is statistical significance?"
+    },
+    {
+      "id": 215,
+      "question": "How do you handle missing values?"
+    },
+    {
+      "id": 216,
+      "question": "Explain feature scaling."
+    },
+    {
+      "id": 217,
+      "question": "Difference between correlation and causation?"
+    },
+    {
+      "id": 218,
+      "question": "Explain A/B testing."
+    },
+    {
+      "id": 219,
+      "question": "How do you handle imbalanced datasets?"
+    },
+    {
+      "id": 220,
+      "question": "How do you choose the right ML model?"
+    }
+  ],
+
+
+  "Hard": [
+    {
+      "id": 221,
+      "question": "Explain dimensionality reduction techniques."
+    },
+    {
+      "id": 222,
+      "question": "Explain PCA mathematically."
+    },
+    {
+      "id": 223,
+      "question": "How would you design a recommendation system?"
+    },
+    {
+      "id": 224,
+      "question": "Explain time series forecasting."
+    },
+    {
+      "id": 225,
+      "question": "Explain Bayesian statistics."
+    },
+    {
+      "id": 226,
+      "question": "How do you build an end-to-end data pipeline?"
+    },
+    {
+      "id": 227,
+      "question": "How do you detect data quality issues?"
+    },
+    {
+      "id": 228,
+      "question": "Explain model validation techniques."
+    },
+    {
+      "id": 229,
+      "question": "How do you communicate insights from data?"
+    },
+    {
+      "id": 230,
+      "question": "Design a complete data science solution."
+    }
+  ]
+
+},
+"Frontend Developer": {
+
+  "Easy": [
+    {
+      "id":301,
+      "question":"What is HTML?"
+    },
+    {
+      "id":302,
+      "question":"What is CSS?"
+    },
+    {
+      "id":303,
+      "question":"What is JavaScript?"
+    },
+    {
+      "id":304,
+      "question":"What is the difference between HTML and CSS?"
+    },
+    {
+      "id":305,
+      "question":"What are HTML tags?"
+    },
+    {
+      "id":306,
+      "question":"What is the DOM?"
+    },
+    {
+      "id":307,
+      "question":"What is responsive design?"
+    },
+    {
+      "id":308,
+      "question":"What is a CSS selector?"
+    },
+    {
+      "id":309,
+      "question":"Difference between let, var, and const in JavaScript?"
+    },
+    {
+      "id":310,
+      "question":"What is an event in JavaScript?"
+    }
+  ],
+
+
+  "Medium": [
+    {
+      "id":311,
+      "question":"Explain the JavaScript event loop."
+    },
+    {
+      "id":312,
+      "question":"What are promises in JavaScript?"
+    },
+    {
+      "id":313,
+      "question":"Explain async and await."
+    },
+    {
+      "id":314,
+      "question":"What is React?"
+    },
+    {
+      "id":315,
+      "question":"Explain React components."
+    },
+    {
+      "id":316,
+      "question":"What are React hooks?"
+    },
+    {
+      "id":317,
+      "question":"Difference between state and props."
+    },
+    {
+      "id":318,
+      "question":"What is virtual DOM?"
+    },
+    {
+      "id":319,
+      "question":"Explain API integration in frontend."
+    },
+    {
+      "id":320,
+      "question":"What is frontend performance optimization?"
+    }
+  ],
+
+
+  "Hard": [
+    {
+      "id":321,
+      "question":"Explain React rendering lifecycle."
+    },
+    {
+      "id":322,
+      "question":"How does React reconciliation work?"
+    },
+    {
+      "id":323,
+      "question":"Explain state management solutions."
+    },
+    {
+      "id":324,
+      "question":"How do you optimize a large React application?"
+    },
+    {
+      "id":325,
+      "question":"Explain code splitting and lazy loading."
+    },
+    {
+      "id":326,
+      "question":"How does browser rendering work?"
+    },
+    {
+      "id":327,
+      "question":"Explain Webpack and bundling."
+    },
+    {
+      "id":328,
+      "question":"How do you improve frontend security?"
+    },
+    {
+      "id":329,
+      "question":"Explain server-side rendering."
+    },
+    {
+      "id":330,
+      "question":"Design a scalable frontend architecture."
+    }
+  ]
+
+},
+"Backend Developer": {
+
+  "Easy": [
+    {
+      "id":401,
+      "question":"What is backend development?"
+    },
+    {
+      "id":402,
+      "question":"What is an API?"
+    },
+    {
+      "id":403,
+      "question":"What is a server?"
+    },
+    {
+      "id":404,
+      "question":"What is a database?"
+    },
+    {
+      "id":405,
+      "question":"Difference between frontend and backend?"
+    },
+    {
+      "id":406,
+      "question":"What is HTTP?"
+    },
+    {
+      "id":407,
+      "question":"What is REST API?"
+    },
+    {
+      "id":408,
+      "question":"What is JSON?"
+    },
+    {
+      "id":409,
+      "question":"What is authentication?"
+    },
+    {
+      "id":410,
+      "question":"What is a framework?"
+    }
+  ],
+
+
+  "Medium": [
+    {
+      "id":411,
+      "question":"Explain REST API architecture."
+    },
+    {
+      "id":412,
+      "question":"Difference between SQL and NoSQL databases?"
+    },
+    {
+      "id":413,
+      "question":"Explain database indexing."
+    },
+    {
+      "id":414,
+      "question":"What is middleware?"
+    },
+    {
+      "id":415,
+      "question":"Explain JWT authentication."
+    },
+    {
+      "id":416,
+      "question":"What are API status codes?"
+    },
+    {
+      "id":417,
+      "question":"Explain database normalization."
+    },
+    {
+      "id":418,
+      "question":"What is caching?"
+    },
+    {
+      "id":419,
+      "question":"Explain backend error handling."
+    },
+    {
+      "id":420,
+      "question":"How do you design a scalable API?"
+    }
+  ],
+
+
+  "Hard": [
+    {
+      "id":421,
+      "question":"Design a scalable backend architecture."
+    },
+    {
+      "id":422,
+      "question":"Explain microservices architecture."
+    },
+    {
+      "id":423,
+      "question":"How does load balancing work?"
+    },
+    {
+      "id":424,
+      "question":"Explain database sharding."
+    },
+    {
+      "id":425,
+      "question":"How do you optimize backend performance?"
+    },
+    {
+      "id":426,
+      "question":"Explain message queues like Kafka or RabbitMQ."
+    },
+    {
+      "id":427,
+      "question":"How do you secure REST APIs?"
+    },
+    {
+      "id":428,
+      "question":"Explain distributed systems concepts."
+    },
+    {
+      "id":429,
+      "question":"How would you design a high traffic system?"
+    },
+    {
+      "id":430,
+      "question":"Explain backend deployment strategies."
+    }
+  ]
+
+},
+"Full Stack Developer": {
+
+  "Easy": [
+    {
+      "id":501,
+      "question":"What is full stack development?"
+    },
+    {
+      "id":502,
+      "question":"What is the difference between frontend and backend?"
+    },
+    {
+      "id":503,
+      "question":"What technologies are used in full stack development?"
+    },
+    {
+      "id":504,
+      "question":"What is a client-server architecture?"
+    },
+    {
+      "id":505,
+      "question":"What is an API?"
+    },
+    {
+      "id":506,
+      "question":"What is a database?"
+    },
+    {
+      "id":507,
+      "question":"What is MVC architecture?"
+    },
+    {
+      "id":508,
+      "question":"What is version control?"
+    },
+    {
+      "id":509,
+      "question":"What is Git?"
+    },
+    {
+      "id":510,
+      "question":"What is deployment?"
+    }
+  ],
+
+
+  "Medium": [
+    {
+      "id":511,
+      "question":"Explain the complete request-response lifecycle."
+    },
+    {
+      "id":512,
+      "question":"How does frontend communicate with backend?"
+    },
+    {
+      "id":513,
+      "question":"Explain REST API integration."
+    },
+    {
+      "id":514,
+      "question":"How do you design database schemas?"
+    },
+    {
+      "id":515,
+      "question":"Explain authentication flow in web applications."
+    },
+    {
+      "id":516,
+      "question":"What are cookies and sessions?"
+    },
+    {
+      "id":517,
+      "question":"Explain state management in frontend applications."
+    },
+    {
+      "id":518,
+      "question":"How do you optimize web application performance?"
+    },
+    {
+      "id":519,
+      "question":"Explain CI/CD pipeline."
+    },
+    {
+      "id":520,
+      "question":"How do you handle application security?"
+    }
+  ],
+
+
+  "Hard": [
+    {
+      "id":521,
+      "question":"Design a scalable full stack application architecture."
+    },
+    {
+      "id":522,
+      "question":"Explain system design for a web application."
+    },
+    {
+      "id":523,
+      "question":"How would you optimize a large scale web application?"
+    },
+    {
+      "id":524,
+      "question":"Explain microservices architecture."
+    },
+    {
+      "id":525,
+      "question":"How do you design a real-time application?"
+    },
+    {
+      "id":526,
+      "question":"Explain caching strategies in web applications."
+    },
+    {
+      "id":527,
+      "question":"How do you improve database performance?"
+    },
+    {
+      "id":528,
+      "question":"Explain cloud deployment architecture."
+    },
+    {
+      "id":529,
+      "question":"How do you handle millions of users?"
+    },
+    {
+      "id":530,
+      "question":"Design a production-ready web platform."
+    }
+  ]
+
+},
+"Data Analyst": {
+
+  "Easy": [
+    {
+      "id":601,
+      "question":"What does a data analyst do?"
+    },
+    {
+      "id":602,
+      "question":"What is data analysis?"
+    },
+    {
+      "id":603,
+      "question":"What is a spreadsheet?"
+    },
+    {
+      "id":604,
+      "question":"What is SQL?"
+    },
+    {
+      "id":605,
+      "question":"What is data visualization?"
+    },
+    {
+      "id":606,
+      "question":"What is a database table?"
+    },
+    {
+      "id":607,
+      "question":"What are rows and columns?"
+    },
+    {
+      "id":608,
+      "question":"What is data cleaning?"
+    },
+    {
+      "id":609,
+      "question":"What is a dashboard?"
+    },
+    {
+      "id":610,
+      "question":"What is business intelligence?"
+    }
+  ],
+
+
+  "Medium": [
+    {
+      "id":611,
+      "question":"Explain SQL joins."
+    },
+    {
+      "id":612,
+      "question":"What is exploratory data analysis?"
+    },
+    {
+      "id":613,
+      "question":"Explain data aggregation."
+    },
+    {
+      "id":614,
+      "question":"How do you handle missing data?"
+    },
+    {
+      "id":615,
+      "question":"Explain statistical analysis."
+    },
+    {
+      "id":616,
+      "question":"What is data normalization?"
+    },
+    {
+      "id":617,
+      "question":"How do you identify trends in data?"
+    },
+    {
+      "id":618,
+      "question":"Explain correlation analysis."
+    },
+    {
+      "id":619,
+      "question":"How do you validate data quality?"
+    },
+    {
+      "id":620,
+      "question":"Explain KPI analysis."
+    }
+  ],
+
+
+  "Hard": [
+    {
+      "id":621,
+      "question":"Design an end-to-end analytics pipeline."
+    },
+    {
+      "id":622,
+      "question":"Explain advanced SQL optimization."
+    },
+    {
+      "id":623,
+      "question":"How would you analyze millions of records?"
+    },
+    {
+      "id":624,
+      "question":"Explain statistical modeling for analytics."
+    },
+    {
+      "id":625,
+      "question":"How do you build a predictive analytics solution?"
+    },
+    {
+      "id":626,
+      "question":"Explain A/B testing methodology."
+    },
+    {
+      "id":627,
+      "question":"How do you communicate complex insights?"
+    },
+    {
+      "id":628,
+      "question":"Design a business intelligence system."
+    },
+    {
+      "id":629,
+      "question":"Explain data-driven decision making."
+    },
+    {
+      "id":630,
+      "question":"How would you improve an organization's analytics process?"
+    }
+  ]
+
+},
+"DevOps Engineer": {
+
+  "Easy": [
+    {
+      "id":701,
+      "question":"What is DevOps?"
+    },
+    {
+      "id":702,
+      "question":"What is CI/CD?"
+    },
+    {
+      "id":703,
+      "question":"What is cloud computing?"
+    },
+    {
+      "id":704,
+      "question":"What is a server?"
+    },
+    {
+      "id":705,
+      "question":"What is Linux?"
+    },
+    {
+      "id":706,
+      "question":"What is Git?"
+    },
+    {
+      "id":707,
+      "question":"What is Docker?"
+    },
+    {
+      "id":708,
+      "question":"What is virtualization?"
+    },
+    {
+      "id":709,
+      "question":"What is deployment?"
+    },
+    {
+      "id":710,
+      "question":"What is monitoring?"
+    }
+  ],
+
+
+  "Medium": [
+    {
+      "id":711,
+      "question":"Explain Docker containers."
+    },
+    {
+      "id":712,
+      "question":"Explain Kubernetes."
+    },
+    {
+      "id":713,
+      "question":"What is a CI/CD pipeline?"
+    },
+    {
+      "id":714,
+      "question":"Explain Infrastructure as Code."
+    },
+    {
+      "id":715,
+      "question":"What are cloud services?"
+    },
+    {
+      "id":716,
+      "question":"Explain AWS EC2."
+    },
+    {
+      "id":717,
+      "question":"What is load balancing?"
+    },
+    {
+      "id":718,
+      "question":"Explain reverse proxy."
+    },
+    {
+      "id":719,
+      "question":"How do you manage application logs?"
+    },
+    {
+      "id":720,
+      "question":"Explain environment variables."
+    }
+  ],
+
+
+  "Hard": [
+    {
+      "id":721,
+      "question":"Design a production DevOps architecture."
+    },
+    {
+      "id":722,
+      "question":"Explain Kubernetes cluster architecture."
+    },
+    {
+      "id":723,
+      "question":"How do you design a scalable deployment pipeline?"
+    },
+    {
+      "id":724,
+      "question":"Explain cloud infrastructure automation."
+    },
+    {
+      "id":725,
+      "question":"How do you handle system failures?"
+    },
+    {
+      "id":726,
+      "question":"Explain monitoring and observability."
+    },
+    {
+      "id":727,
+      "question":"How do you improve application reliability?"
+    },
+    {
+      "id":728,
+      "question":"Explain blue-green deployment."
+    },
+    {
+      "id":729,
+      "question":"How do you secure cloud infrastructure?"
+    },
+    {
+      "id":730,
+      "question":"Design a highly available system."
+    }
+  ]
+
+},
+"Software Engineer": {
+
+  "Easy": [
+    {
+      "id":801,
+      "question":"What is software engineering?"
+    },
+    {
+      "id":802,
+      "question":"What is OOP?"
+    },
+    {
+      "id":803,
+      "question":"Explain classes and objects."
+    },
+    {
+      "id":804,
+      "question":"What is inheritance?"
+    },
+    {
+      "id":805,
+      "question":"What is polymorphism?"
+    },
+    {
+      "id":806,
+      "question":"What is an algorithm?"
+    },
+    {
+      "id":807,
+      "question":"What is a data structure?"
+    },
+    {
+      "id":808,
+      "question":"What is debugging?"
+    },
+    {
+      "id":809,
+      "question":"What is version control?"
+    },
+    {
+      "id":810,
+      "question":"What is software testing?"
+    }
+  ],
+
+
+  "Medium": [
+    {
+      "id":811,
+      "question":"Explain SOLID principles."
+    },
+    {
+      "id":812,
+      "question":"Explain design patterns."
+    },
+    {
+      "id":813,
+      "question":"Difference between stack and queue."
+    },
+    {
+      "id":814,
+      "question":"Explain time complexity."
+    },
+    {
+      "id":815,
+      "question":"What is multithreading?"
+    },
+    {
+      "id":816,
+      "question":"Explain exception handling."
+    },
+    {
+      "id":817,
+      "question":"Explain REST APIs."
+    },
+    {
+      "id":818,
+      "question":"What is database indexing?"
+    },
+    {
+      "id":819,
+      "question":"Explain unit testing."
+    },
+    {
+      "id":820,
+      "question":"Explain software development lifecycle."
+    }
+  ],
+
+
+  "Hard": [
+    {
+      "id":821,
+      "question":"Design a scalable software system."
+    },
+    {
+      "id":822,
+      "question":"Explain system design principles."
+    },
+    {
+      "id":823,
+      "question":"How do you optimize application performance?"
+    },
+    {
+      "id":824,
+      "question":"Explain distributed systems."
+    },
+    {
+      "id":825,
+      "question":"Design a URL shortening service."
+    },
+    {
+      "id":826,
+      "question":"Explain database scalability."
+    },
+    {
+      "id":827,
+      "question":"Explain caching strategies."
+    },
+    {
+      "id":828,
+      "question":"How do you handle millions of requests?"
+    },
+    {
+      "id":829,
+      "question":"Explain software architecture patterns."
+    },
+    {
+      "id":830,
+      "question":"Design a production-ready application."
+    }
+  ]
+
+}
+}
