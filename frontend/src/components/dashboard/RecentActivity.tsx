@@ -1,17 +1,31 @@
 import { useEffect, useState } from "react";
 
+import { 
+  FileText,
+  Brain
+} from "lucide-react";
+
+
 import { apiFetch } from "../../services/api";
+
 
 
 
 
 interface Activity {
 
+
   title: string;
+
 
   status: string;
 
+
   type: string;
+
+
+  created_at: string;
+
 
 }
 
@@ -67,8 +81,8 @@ export default function RecentActivity() {
 
 
 
-        if (!response.ok) {
 
+        if (!response.ok) {
 
 
           throw new Error(
@@ -78,7 +92,6 @@ export default function RecentActivity() {
           );
 
 
-
         }
 
 
@@ -86,8 +99,19 @@ export default function RecentActivity() {
 
 
 
-
         const data = await response.json();
+
+
+
+
+
+        console.log(
+
+          "Dashboard Activity:",
+
+          data
+
+        );
 
 
 
@@ -125,13 +149,10 @@ export default function RecentActivity() {
 
         setActivities([]);
 
+
+
+
       }
-
-
-
-
-
-
 
       finally{
 
@@ -169,6 +190,35 @@ export default function RecentActivity() {
 
 
 
+  function formatDate(date:string){
+
+
+
+    return new Date(date).toLocaleDateString(
+
+      "en-IN",
+
+      {
+
+        day:"2-digit",
+
+        month:"short",
+
+        year:"numeric"
+
+      }
+
+    );
+
+
+
+  }
+
+
+
+
+
+
 
 
 
@@ -183,14 +233,15 @@ export default function RecentActivity() {
 
 
 
-
       <div className="mb-6">
 
 
 
         <h2 className="text-2xl font-bold text-white">
 
+
           Recent Activity
+
 
         </h2>
 
@@ -200,7 +251,9 @@ export default function RecentActivity() {
 
         <p className="mt-1 text-sm text-slate-500">
 
+
           Your latest preparation progress
+
 
         </p>
 
@@ -216,25 +269,21 @@ export default function RecentActivity() {
 
 
 
-
-
-
       {loading && (
 
 
 
         <p className="text-cyan-400">
 
+
           Loading activity...
+
 
         </p>
 
 
 
       )}
-
-
-
 
 
 
@@ -251,13 +300,13 @@ export default function RecentActivity() {
         <div className="rounded-xl bg-slate-950 p-6 text-center">
 
 
-
           <p className="text-slate-400">
 
-            No activity yet.
+
+            No activity yet. Complete an interview or upload a resume.
+
 
           </p>
-
 
 
         </div>
@@ -265,9 +314,6 @@ export default function RecentActivity() {
 
 
       )}
-
-
-
 
 
 
@@ -289,43 +335,146 @@ export default function RecentActivity() {
 
 
 
-          {activities.map((activity,index)=>(
+          {activities.map((activity,index)=>{
 
 
 
 
 
-            <div
+            const Icon =
 
-              key={index}
+              activity.type === "Resume"
 
-              className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950 p-4"
+              ? FileText
 
-            >
-
-
-
-
-
-              <div>
-
-
-
-                <p className="font-medium text-white">
-
-                  {activity.title}
-
-                </p>
+              : Brain;
 
 
 
 
 
-                <p className="mt-1 text-xs text-slate-500">
 
-                  {activity.type}
 
-                </p>
+            return (
+
+
+
+
+
+              <div
+
+
+
+                key={`${activity.type}-${index}`}
+
+
+
+                className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950 p-4"
+
+              >
+
+
+
+
+
+
+
+                <div className="flex items-center gap-4">
+
+
+
+
+
+
+                  <div className="rounded-xl bg-cyan-500/10 p-3">
+
+
+                    <Icon
+
+                      size={22}
+
+                      className="text-cyan-400"
+
+                    />
+
+
+                  </div>
+
+
+
+
+
+
+
+
+                  <div>
+
+
+
+                    <p className="font-medium text-white">
+
+
+                      {activity.title}
+
+
+                    </p>
+
+
+
+
+
+
+                    <p className="mt-1 text-xs text-slate-500">
+
+
+                      {activity.type} • {formatDate(activity.created_at)}
+
+
+                    </p>
+
+
+
+                  </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <span
+
+                  className={
+
+                    activity.type === "Resume"
+
+                    ? "text-cyan-400 font-semibold"
+
+                    : "text-green-400 font-semibold"
+
+                  }
+
+                >
+
+
+                  {activity.status}
+
+
+                </span>
+
+
+
+
 
 
 
@@ -335,41 +484,13 @@ export default function RecentActivity() {
 
 
 
-
-
-
-
-              <span
-
-                className={
-
-                  activity.type === "Resume"
-
-                  ? "text-cyan-400"
-
-                  : "text-green-400"
-
-                }
-
-              >
-
-                {activity.status}
-
-              </span>
+            );
 
 
 
 
 
-
-
-            </div>
-
-
-
-
-
-          ))}
+          })}
 
 
 
@@ -390,15 +511,10 @@ export default function RecentActivity() {
 
 
 
-
-
-
     </div>
 
 
 
   );
-
-
 
 }

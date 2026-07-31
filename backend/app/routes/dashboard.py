@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 
 from sqlalchemy.orm import Session
 
-from sqlalchemy import func
+from sqlalchemy import func, desc
 
 from app.database import SessionLocal
 
@@ -14,13 +14,7 @@ from app.auth import get_current_user
 
 
 
-
-
 router = APIRouter()
-
-
-
-
 
 
 
@@ -28,17 +22,13 @@ router = APIRouter()
 # Database Dependency
 # =========================
 
-
 def get_db():
 
-
     db = SessionLocal()
-
 
     try:
 
         yield db
-
 
     finally:
 
@@ -46,49 +36,31 @@ def get_db():
 
 
 
-
-
-
-
-
-
-
-
 # =========================
 # Dashboard Statistics
 # =========================
 
-
 @router.get("/stats")
 def dashboard_stats(
 
-
     db: Session = Depends(get_db),
-
 
     current_user = Depends(get_current_user)
 
-
 ):
-
 
 
     user_id = current_user["id"]
 
 
 
-
-
-
-
+    # -------------------------
     # Total Interviews
-
+    # -------------------------
 
     interview_count = (
 
-
         db.query(InterviewResult)
-
 
         .filter(
 
@@ -96,37 +68,23 @@ def dashboard_stats(
 
         )
 
-
         .count()
-
 
     )
 
 
 
-
-
-
-
-
-
-
+    # -------------------------
     # Average Resume Score
-
+    # -------------------------
 
     avg_resume_score = (
 
-
         db.query(
 
-            func.avg(
-
-                ResumeResult.score
-
-            )
+            func.avg(ResumeResult.score)
 
         )
-
 
         .filter(
 
@@ -134,36 +92,23 @@ def dashboard_stats(
 
         )
 
-
         .scalar()
-
 
     )
 
 
 
-
-
-
-
-
-
+    # -------------------------
     # Average Interview Score
-
+    # -------------------------
 
     avg_interview_score = (
 
-
         db.query(
 
-            func.avg(
-
-                InterviewResult.score
-
-            )
+            func.avg(InterviewResult.score)
 
         )
-
 
         .filter(
 
@@ -171,23 +116,96 @@ def dashboard_stats(
 
         )
 
-
         .scalar()
-
 
     )
 
 
 
+    # -------------------------
+    # Best Interview Score
+    # -------------------------
+
+    best_score = (
+
+        db.query(
+
+            func.max(InterviewResult.score)
+
+        )
+
+        .filter(
+
+            InterviewResult.user_id == user_id
+
+        )
+
+        .scalar()
+
+    )
 
 
 
+    # -------------------------
+    # Resume Count
+    # -------------------------
 
+    resume_count = (
+
+        db.query(ResumeResult)
+
+        .filter(
+
+            ResumeResult.user_id == user_id
+
+        )
+
+        .count()
+
+    )
+
+
+
+    # -------------------------
+    # Rank Calculation
+    # -------------------------
+
+    rank = 1000
+
+
+    if avg_interview_score:
+
+
+        better_users = (
+
+            db.query(
+
+                InterviewResult.user_id
+
+            )
+
+            .group_by(
+
+                InterviewResult.user_id
+
+            )
+
+            .having(
+
+                func.avg(InterviewResult.score) > avg_interview_score
+
+            )
+
+            .count()
+
+        )
+
+
+        rank = better_users + 1
 
 
 
     return {
-
 
 
         "interviews":
@@ -195,45 +213,43 @@ def dashboard_stats(
             interview_count,
 
 
-
         "resumeScore":
 
-            round(avg_resume_score,2)
+            round(avg_resume_score, 2)
 
             if avg_resume_score
 
             else 0,
 
 
-
         "codingScore":
 
-            round(avg_interview_score,2)
+            round(avg_interview_score, 2)
 
             if avg_interview_score
 
             else 0,
 
 
-
         "rank":
 
-            145
+            rank,
 
 
+        "bestScore":
+
+            best_score
+
+            if best_score
+
+            else 0,
+
+
+        "resumeCount":
+
+            resume_count
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -241,44 +257,30 @@ def dashboard_stats(
 # Dashboard Activity
 # =========================
 
-
 @router.get("/activity")
 def dashboard_activity(
 
-
     db: Session = Depends(get_db),
 
-
     current_user = Depends(get_current_user)
-
 
 ):
 
 
-
     user_id = current_user["id"]
-
-
 
 
     activities = []
 
 
 
-
-
-
-
-
-
+    # -------------------------
     # Interview Activity
-
+    # -------------------------
 
     interviews = (
 
-
         db.query(InterviewResult)
-
 
         .filter(
 
@@ -286,29 +288,17 @@ def dashboard_activity(
 
         )
 
-
         .order_by(
 
-
-            InterviewResult.created_at.desc()
+            desc(InterviewResult.created_at)
 
         )
 
-
         .limit(5)
-
 
         .all()
 
-
     )
-
-
-
-
-
-
-
 
 
 
@@ -318,59 +308,37 @@ def dashboard_activity(
         activities.append({
 
 
-
             "title":
-
 
                 f"{item.role} Interview",
 
 
-
-
             "status":
-
 
                 f"Score {item.score}%",
 
 
-
-
             "type":
-
 
                 "Interview",
 
 
-
-
             "created_at":
 
-
                 item.created_at
-
 
 
         })
 
 
 
-
-
-
-
-
-
-
-
-
+    # -------------------------
     # Resume Activity
-
+    # -------------------------
 
     resumes = (
 
-
         db.query(ResumeResult)
-
 
         .filter(
 
@@ -378,28 +346,17 @@ def dashboard_activity(
 
         )
 
-
         .order_by(
 
-
-            ResumeResult.created_at.desc()
+            desc(ResumeResult.created_at)
 
         )
 
-
         .limit(5)
-
 
         .all()
 
-
     )
-
-
-
-
-
-
 
 
 
@@ -409,69 +366,41 @@ def dashboard_activity(
         activities.append({
 
 
-
             "title":
-
 
                 "Resume Analysis",
 
 
-
-
             "status":
-
 
                 f"ATS Score {item.score}%",
 
 
-
-
             "type":
-
 
                 "Resume",
 
 
-
-
             "created_at":
 
-
                 item.created_at
-
 
 
         })
 
 
 
-
-
-
-
-
-
-
-
-
+    # -------------------------
     # Latest First
-
+    # -------------------------
 
     activities.sort(
 
-
         key=lambda x: x["created_at"],
-
 
         reverse=True
 
-
     )
-
-
-
-
-
 
 
     return activities[:5]

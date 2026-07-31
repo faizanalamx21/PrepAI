@@ -1,6 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+import os
+from dotenv import load_dotenv
+
+
+# =========================
+# Load Environment Variables
+# =========================
+
+load_dotenv()
+
 
 
 # =========================
@@ -11,17 +21,13 @@ from app.database import engine, Base
 
 
 
-
-
 # =========================
 # Import Models
-# Register SQLAlchemy tables
+# Register SQLAlchemy Tables
 # =========================
 
 from app.models import interview
 from app.models import resume
-
-
 
 
 
@@ -37,20 +43,13 @@ from app.routes.dashboard import router as dashboard_router
 
 
 
-
-
 # =========================
 # Create Database Tables
 # =========================
 
 Base.metadata.create_all(
-
     bind=engine
-
 )
-
-
-
 
 
 
@@ -76,11 +75,17 @@ app = FastAPI(
 
 
 
-
-
 # =========================
 # CORS Configuration
 # =========================
+
+
+frontend_url = os.getenv(
+    "FRONTEND_URL",
+    "http://localhost:5173"
+)
+
+
 
 app.add_middleware(
 
@@ -88,6 +93,8 @@ app.add_middleware(
 
 
     allow_origins=[
+
+        frontend_url,
 
         "http://localhost:5173",
 
@@ -101,17 +108,7 @@ app.add_middleware(
 
     allow_methods=[
 
-        "GET",
-
-        "POST",
-
-        "PUT",
-
-        "DELETE",
-
-        "PATCH",
-
-        "OPTIONS"
+        "*"
 
     ],
 
@@ -130,10 +127,8 @@ app.add_middleware(
 
 
 
-
-
 # =========================
-# Interview API Routes
+# Interview Routes
 # =========================
 
 app.include_router(
@@ -156,10 +151,8 @@ app.include_router(
 
 
 
-
-
 # =========================
-# Resume API Routes
+# Resume Routes
 # =========================
 
 app.include_router(
@@ -182,10 +175,8 @@ app.include_router(
 
 
 
-
-
 # =========================
-# Dashboard API Routes
+# Dashboard Routes
 # =========================
 
 app.include_router(
@@ -208,23 +199,17 @@ app.include_router(
 
 
 
-
-
 # =========================
 # Health Check
 # =========================
 
 @app.get("/")
-
 def home():
 
     return {
 
-
         "status": "success",
 
-
         "message": "PrepAI Backend Running 🚀"
-
 
     }

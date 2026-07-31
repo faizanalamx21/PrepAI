@@ -15,8 +15,6 @@ import { apiFetch } from "../../services/api";
 
 
 
-
-
 interface DashboardStats {
 
 
@@ -32,11 +30,13 @@ interface DashboardStats {
   rank: number;
 
 
+  bestScore: number;
+
+
+  resumeCount: number;
+
+
 }
-
-
-
-
 
 
 
@@ -51,14 +51,15 @@ export default function Dashboard() {
 
     interviews: 0,
 
-
     resumeScore: 0,
-
 
     codingScore: 0,
 
-
     rank: 1000,
+
+    bestScore: 0,
+
+    resumeCount: 0,
 
 
   });
@@ -67,12 +68,7 @@ export default function Dashboard() {
 
 
 
-
-
   const [loading, setLoading] = useState(true);
-
-
-
 
 
 
@@ -89,9 +85,6 @@ export default function Dashboard() {
 
 
 
-
-
-
     async function fetchDashboardStats() {
 
 
@@ -99,31 +92,17 @@ export default function Dashboard() {
       try {
 
 
-
-
-
         const response = await apiFetch(
-
 
           "/api/dashboard/stats",
 
-
           {
 
-
-            signal:
-
-              controller.signal
-
+            signal: controller.signal
 
           }
 
-
         );
-
-
-
-
 
 
 
@@ -131,22 +110,13 @@ export default function Dashboard() {
         if (!response.ok) {
 
 
-
           throw new Error(
-
 
             "Dashboard API failed"
 
-
           );
 
-
         }
-
-
-
-
-
 
 
 
@@ -157,75 +127,57 @@ export default function Dashboard() {
 
 
 
-
-
-
-
         setStats({
 
 
-
-
-
           interviews:
-
 
             Number(data.interviews) || 0,
 
 
 
-
-
-
-
           resumeScore:
-
 
             Math.round(
 
-
               Number(data.resumeScore) || 0
 
-
             ),
-
-
-
-
 
 
 
           codingScore:
 
-
             Math.round(
 
-
               Number(data.codingScore) || 0
-
 
             ),
 
 
 
-
-
-
-
           rank:
-
 
             Number(data.rank) || 1000,
 
 
 
+          bestScore:
+
+            Math.round(
+
+              Number(data.bestScore) || 0
+
+            ),
+
+
+
+          resumeCount:
+
+            Number(data.resumeCount) || 0
+
+
         });
-
-
-
-
-
-
 
 
 
@@ -234,21 +186,14 @@ export default function Dashboard() {
       catch(error:any){
 
 
-
-
-
         if(error.name !== "AbortError"){
-
 
 
           console.error(
 
-
             "Dashboard Error:",
 
-
             error
-
 
           );
 
@@ -256,26 +201,18 @@ export default function Dashboard() {
         }
 
 
-
       }
 
       finally{
 
 
-
         setLoading(false);
-
 
 
       }
 
 
-
     }
-
-
-
-
 
 
 
@@ -287,15 +224,10 @@ export default function Dashboard() {
 
 
 
-
-
-
     return () => {
 
 
-
       controller.abort();
-
 
 
     };
@@ -311,29 +243,11 @@ export default function Dashboard() {
 
 
 
-
-
-
-
-
-
   return (
-
-
-
 
 
     <div className="flex min-h-screen bg-slate-950">
 
-
-
-
-
-
-
-
-
-      {/* Sidebar */}
 
 
       <DashboardSidebar />
@@ -341,21 +255,7 @@ export default function Dashboard() {
 
 
 
-
-
-
-
-
-      {/* Main Content */}
-
-
       <div className="flex-1">
-
-
-
-
-
-
 
 
 
@@ -364,19 +264,7 @@ export default function Dashboard() {
 
 
 
-
-
-
-
-
         <main className="space-y-8 p-8">
-
-
-
-
-
-
-
 
 
 
@@ -386,54 +274,25 @@ export default function Dashboard() {
 
 
 
-
-
-
-
-
-
-
           {loading ? (
-
-
 
 
 
             <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
 
 
-
-
-
               <p className="text-cyan-400">
-
 
                 Loading dashboard...
 
-
               </p>
-
-
-
 
 
             </div>
 
 
 
-
-
-          )
-
-
-
-          :
-
-
-
-          (
-
-
+          ) : (
 
 
 
@@ -441,81 +300,37 @@ export default function Dashboard() {
 
 
 
-
-
-
-
-              {/* Statistics */}
-
-
-
               <StatsCards
-
-
-
 
                 interviews={stats.interviews}
 
-
-
-
                 resumeScore={stats.resumeScore}
-
-
-
 
                 codingScore={stats.codingScore}
 
-
-
-
                 rank={stats.rank}
 
+                bestScore={stats.bestScore}
 
-
-
+                resumeCount={stats.resumeCount}
 
               />
 
 
-
-
-
-
-
-
-
-              {/* Progress */}
 
 
 
               <ProgressSection
 
-
-
-
                 resumeScore={stats.resumeScore}
 
-
-
-
                 interviewScore={stats.codingScore}
-
-
-
-
 
               />
 
 
 
-
-
-
-
             </>
-
-
 
 
 
@@ -526,21 +341,7 @@ export default function Dashboard() {
 
 
 
-
-
-
-
-
-
-          {/* Recent Activity */}
-
-
-
           <RecentActivity />
-
-
-
-
 
 
 
@@ -550,28 +351,13 @@ export default function Dashboard() {
 
 
 
-
-
-
-
-
-
       </div>
-
-
-
-
-
 
 
 
     </div>
 
 
-
-
   );
-
-
 
 }
