@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/ui/button";
 import { useInterview } from "../../context/InterviewContext";
 
+import { apiFetch } from "../../services/api";
+
+
 
 export default function InterviewSetup() {
 
@@ -16,6 +19,7 @@ export default function InterviewSetup() {
     setQuestions,
     setAnswers,
   } = useInterview();
+
 
 
 
@@ -49,17 +53,14 @@ export default function InterviewSetup() {
 
 
 
-      const response = await fetch(
 
-        "http://127.0.0.1:8000/api/interview/questions",
+      const response = await apiFetch(
+
+        "/api/interview/questions",
 
         {
 
           method:"POST",
-
-          headers:{
-            "Content-Type":"application/json",
-          },
 
           body:JSON.stringify({
 
@@ -79,13 +80,30 @@ export default function InterviewSetup() {
 
 
 
+
       if(!response.ok){
+
+
+        const errorData =
+          await response.json()
+          .catch(()=>null);
+
+
+
+        console.error(
+          "Backend error:",
+          errorData
+        );
+
+
 
         throw new Error(
           "Backend request failed"
         );
 
+
       }
+
 
 
 
@@ -99,24 +117,36 @@ export default function InterviewSetup() {
 
 
       console.log(
+
         "BACKEND QUESTIONS:",
+
         data.questions
+
       );
 
 
 
 
 
+
       if(
+
         !data.questions ||
+
         data.questions.length === 0
+
       ){
+
 
         throw new Error(
           "No questions received"
         );
 
+
       }
+
+
+
 
 
 
@@ -137,18 +167,13 @@ export default function InterviewSetup() {
 
 
 
+
       setQuestions(
+
         data.questions
+
       );
 
-
-
-
-
-      console.log(
-        "SAVED TO CONTEXT:",
-        data.questions
-      );
 
 
 
@@ -162,31 +187,41 @@ export default function InterviewSetup() {
 
 
 
+
       navigate(
+
         "/interview/session"
+
       );
 
 
 
 
-
     }
+
 
     catch(error){
 
 
       console.error(
+
         "INTERVIEW START ERROR:",
+
         error
+
       );
 
 
+
       alert(
+
         "Unable to start interview"
+
       );
 
 
     }
+
 
 
     finally{
@@ -204,9 +239,14 @@ export default function InterviewSetup() {
 
 
 
+
+
+
   return (
 
+
     <div className="mx-auto max-w-3xl rounded-3xl border border-slate-800 bg-slate-900 p-10">
+
 
 
       <h1 className="text-4xl font-bold text-white">
@@ -214,6 +254,7 @@ export default function InterviewSetup() {
         AI Mock Interview
 
       </h1>
+
 
 
 
@@ -227,17 +268,22 @@ export default function InterviewSetup() {
 
 
 
+
       <div className="mt-8 space-y-6">
 
 
 
+
+
         <div>
+
 
           <label className="mb-2 block text-slate-300">
 
             Job Role
 
           </label>
+
 
 
           <select
@@ -252,17 +298,28 @@ export default function InterviewSetup() {
 
           >
 
+
             <option>AI Engineer</option>
+
             <option>ML Engineer</option>
+
             <option>Data Scientist</option>
+
             <option>Frontend Developer</option>
+
             <option>Backend Developer</option>
+
             <option>Full Stack Developer</option>
+
             <option>Data Analyst</option>
+
             <option>DevOps Engineer</option>
+
             <option>Software Engineer</option>
 
+
           </select>
+
 
         </div>
 
@@ -270,13 +327,17 @@ export default function InterviewSetup() {
 
 
 
+
+
         <div>
+
 
           <label className="mb-2 block text-slate-300">
 
             Difficulty
 
           </label>
+
 
 
           <select
@@ -287,18 +348,26 @@ export default function InterviewSetup() {
               setDifficulty(e.target.value)
             }
 
+
             className="w-full rounded-xl border border-slate-700 bg-slate-950 p-3 text-white"
+
 
           >
 
+
             <option>Easy</option>
+
             <option>Medium</option>
+
             <option>Hard</option>
+
+
 
           </select>
 
 
         </div>
+
 
 
 
@@ -318,22 +387,33 @@ export default function InterviewSetup() {
 
           <input
 
+
             type="number"
+
 
             min={5}
 
+
             max={30}
+
 
             value={questionCount}
 
+
             onChange={(e)=>
+
               setQuestionCount(
+
                 Number(e.target.value)
+
               )
+
             }
 
 
+
             className="w-full rounded-xl border border-slate-700 bg-slate-950 p-3 text-white"
+
 
           />
 
@@ -345,28 +425,45 @@ export default function InterviewSetup() {
 
 
 
+
         <Button
+
 
           type="button"
 
+
           disabled={loading}
+
 
           onClick={handleStartInterview}
 
+
           className="w-full bg-cyan-500 hover:bg-cyan-400"
+
 
         >
 
+
           {
+
             loading
+
             ?
+
             "Generating Interview..."
+
             :
+
             "Start Interview"
+
           }
 
 
+
         </Button>
+
+
+
 
 
       </div>
@@ -374,6 +471,8 @@ export default function InterviewSetup() {
 
     </div>
 
+
   );
+
 
 }

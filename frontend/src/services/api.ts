@@ -2,7 +2,7 @@ import { supabase } from "../lib/supabase";
 
 
 const API_BASE_URL =
-  "http://127.0.0.1:8000";
+  import.meta.env.VITE_API_URL;
 
 
 
@@ -12,9 +12,8 @@ export async function apiFetch(
 ) {
 
 
-  // Get current Supabase session
   const {
-    data: {
+    data:{
       session
     }
   } = await supabase.auth.getSession();
@@ -32,10 +31,14 @@ export async function apiFetch(
 
 
 
-  headers.set(
-    "Content-Type",
-    "application/json"
-  );
+  if(options.body){
+
+    headers.set(
+      "Content-Type",
+      "application/json"
+    );
+
+  }
 
 
 
@@ -47,14 +50,6 @@ export async function apiFetch(
     );
 
   }
-  else{
-
-    console.error(
-      "No Supabase token found"
-    );
-
-  }
-
 
 
 
@@ -63,11 +58,8 @@ export async function apiFetch(
     `${API_BASE_URL}${url}`,
 
     {
-
       ...options,
-
       headers
-
     }
 
   );
