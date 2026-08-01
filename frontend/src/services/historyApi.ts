@@ -1,167 +1,102 @@
-import { supabase } from "../lib/supabase";
-
-
-
-const HISTORY_URL =
-
-  "http://127.0.0.1:8000/api/interview/history";
-
-
-
-
-
-
+import { apiFetch } from "./api";
 
 
 // =========================
-// Get Authentication Header
+// Interview History API
 // =========================
 
-
-async function getAuthHeaders(){
-
+export async function getInterviewHistory() {
 
 
-  const {
-
-    data
-
-  } = await supabase.auth.getSession();
+  try {
 
 
+    const response = await apiFetch(
 
+      "/api/interview/history",
 
-
-  const token =
-
-    data.session?.access_token;
-
-
-
-
-
-
-
-  if(!token){
-
-
-    throw new Error(
-
-      "User not authenticated"
+      {
+        method: "GET",
+      }
 
     );
 
 
-  }
+
+
+    if (!response.ok) {
+
+
+      const errorText =
+        await response.text();
 
 
 
+      console.error(
+        "Interview history API error:",
+        errorText
+      );
 
 
 
-
-  return {
-
-
-    Authorization:
-
-      `Bearer ${token}`
-
-
-  };
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-// =========================
-// Interview History
-// =========================
-
-
-export async function getInterviewHistory(){
-
-
-
-
-
-  const headers =
-
-    await getAuthHeaders();
-
-
-
-
-
-
-
-  const response = await fetch(
-
-
-    HISTORY_URL,
-
-
-    {
-
-
-      method:"GET",
-
-
-      headers,
+      throw new Error(
+        errorText ||
+        "Failed to fetch interview history"
+      );
 
 
     }
 
 
-  );
+
+
+
+    const data =
+      await response.json();
 
 
 
 
 
+    if(Array.isArray(data)){
 
+      return data;
 
-
-  if(!response.ok){
-
-
-
-    const error =
-
-      await response.text();
+    }
 
 
 
 
-    throw new Error(
+
+    if(data.history && Array.isArray(data.history)){
+
+      return data.history;
+
+    }
 
 
-      error || "Failed to fetch interview history"
 
 
-    );
+
+    return [];
+
 
 
   }
 
+  catch(error){
 
 
+    console.error(
+      "getInterviewHistory failed:",
+      error
+    );
 
 
+    throw error;
 
 
-
-  return await response.json();
-
+  }
 
 
 }

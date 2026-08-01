@@ -1,8 +1,9 @@
-import { supabase } from "../lib/supabase";
+import { apiFetch } from "./api";
 
 
-
-
+// =========================
+// Resume Analysis Interface
+// =========================
 
 export interface ResumeAnalysis {
 
@@ -28,121 +29,29 @@ export interface ResumeAnalysis {
 
 
 
-
-
+// =========================
+// Resume History Interface
+// =========================
 
 export interface ResumeHistoryItem {
 
-
   id: number;
-
 
   filename: string;
 
-
   score: number;
-
 
   skills: string[];
 
-
   missingKeywords: string[];
-
 
   strengths: string[];
 
-
   suggestions: string[];
-
 
   created_at: string;
 
-
 }
-
-
-
-
-
-
-
-
-
-const API_BASE_URL =
-
-  "http://127.0.0.1:8000/api/resume";
-
-
-
-
-
-
-
-
-
-// =========================
-// Authentication Header
-// =========================
-
-
-async function getAuthHeaders(){
-
-
-
-  const {
-
-    data
-
-  } = await supabase.auth.getSession();
-
-
-
-
-
-  const token =
-
-    data.session?.access_token;
-
-
-
-
-
-
-
-  if(!token){
-
-
-    throw new Error(
-
-      "User not authenticated"
-
-    );
-
-
-  }
-
-
-
-
-
-
-
-  return {
-
-
-    Authorization:
-
-      `Bearer ${token}`
-
-
-  };
-
-
-}
-
-
-
-
 
 
 
@@ -154,7 +63,6 @@ async function getAuthHeaders(){
 // Analyze Resume
 // =========================
 
-
 export async function analyzeResume(
 
   file: File
@@ -164,7 +72,6 @@ export async function analyzeResume(
 
 
   const formData = new FormData();
-
 
 
   formData.append(
@@ -180,41 +87,19 @@ export async function analyzeResume(
 
 
 
+  const response = await apiFetch(
 
-
-  const headers =
-
-    await getAuthHeaders();
-
-
-
-
-
-
-
-  const response = await fetch(
-
-
-    `${API_BASE_URL}/analyze`,
-
+    "/api/resume/analyze",
 
     {
 
-
       method: "POST",
-
-
-      headers,
-
 
       body: formData,
 
-
     }
 
-
   );
-
 
 
 
@@ -225,13 +110,27 @@ export async function analyzeResume(
   if(!response.ok){
 
 
-    const error = await response.text();
+    const error =
+
+      await response.text();
+
+
+
+    console.error(
+
+      "Resume analysis error:",
+
+      error
+
+    );
 
 
 
     throw new Error(
 
-      error || "Resume analysis failed"
+      error ||
+
+      "Resume analysis failed"
 
     );
 
@@ -245,8 +144,9 @@ export async function analyzeResume(
 
 
 
-  const result = await response.json();
+  const result =
 
+    await response.json();
 
 
 
@@ -277,6 +177,7 @@ export async function analyzeResume(
 
     skills:
 
+
       Array.isArray(result.skills)
 
       ? result.skills
@@ -291,6 +192,10 @@ export async function analyzeResume(
       Array.isArray(result.missingKeywords)
 
       ? result.missingKeywords
+
+      : Array.isArray(result.missing_keywords)
+
+      ? result.missing_keywords
 
       : [],
 
@@ -323,7 +228,6 @@ export async function analyzeResume(
       result.created_at || "",
 
 
-
   };
 
 
@@ -337,12 +241,9 @@ export async function analyzeResume(
 
 
 
-
-
 // =========================
 // Resume History
 // =========================
-
 
 export async function getResumeHistory()
 
@@ -350,38 +251,17 @@ export async function getResumeHistory()
 
 
 
-  const headers =
+  const response = await apiFetch(
 
-    await getAuthHeaders();
-
-
-
-
-
-
-
-  const response = await fetch(
-
-
-
-    `${API_BASE_URL}/history`,
-
-
+    "/api/resume/history",
 
     {
 
-
       method:"GET",
-
-
-      headers,
-
 
     }
 
-
   );
-
 
 
 
@@ -392,13 +272,28 @@ export async function getResumeHistory()
   if(!response.ok){
 
 
-    const error = await response.text();
+
+    const error =
+
+      await response.text();
+
+
+
+    console.error(
+
+      "Resume history error:",
+
+      error
+
+    );
 
 
 
     throw new Error(
 
-      error || "Failed to load resume history"
+      error ||
+
+      "Failed to load resume history"
 
     );
 
@@ -411,8 +306,23 @@ export async function getResumeHistory()
 
 
 
+  const result =
 
-  const result = await response.json();
+    await response.json();
+
+
+
+
+
+
+
+  if(!Array.isArray(result)){
+
+
+    return [];
+
+
+  }
 
 
 
@@ -425,9 +335,7 @@ export async function getResumeHistory()
 
 
 
-    (item:any) => ({
-
-
+    (item:any)=>({
 
 
 
@@ -540,10 +448,7 @@ export async function getResumeHistory()
 
 
 
-
-
     })
-
 
   );
 
