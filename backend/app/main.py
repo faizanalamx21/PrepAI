@@ -23,7 +23,6 @@ from app.database import engine, Base
 
 # =========================
 # Import Models
-# Register SQLAlchemy Tables
 # =========================
 
 from app.models import interview
@@ -73,32 +72,23 @@ app = FastAPI(
 
 
 
-
-
 # =========================
 # CORS Configuration
 # =========================
-
-
-frontend_url = os.getenv(
-    "FRONTEND_URL",
-    "http://localhost:5173"
-)
-
 
 
 app.add_middleware(
 
     CORSMiddleware,
 
-
     allow_origins=[
 
-        frontend_url,
-
+        # Local development
         "http://localhost:5173",
+        "http://127.0.0.1:5173",
 
-        "http://127.0.0.1:5173"
+        # Production frontend
+        "https://prep-ai-ochre-delta.vercel.app",
 
     ],
 
@@ -107,21 +97,15 @@ app.add_middleware(
 
 
     allow_methods=[
-
         "*"
-
     ],
 
 
     allow_headers=[
-
         "*"
-
     ],
 
 )
-
-
 
 
 
@@ -138,14 +122,10 @@ app.include_router(
     prefix="/api/interview",
 
     tags=[
-
         "Interview"
-
     ]
 
 )
-
-
 
 
 
@@ -162,14 +142,10 @@ app.include_router(
     prefix="/api/resume",
 
     tags=[
-
         "Resume"
-
     ]
 
 )
-
-
 
 
 
@@ -186,14 +162,10 @@ app.include_router(
     prefix="/api/dashboard",
 
     tags=[
-
         "Dashboard"
-
     ]
 
 )
-
-
 
 
 
